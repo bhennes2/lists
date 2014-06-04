@@ -1,24 +1,10 @@
 <div ng-include="'partials/navbar'"></div>
 
-<div ng-hide="currentUser" class="jumbotron">
-  <h1>Never Forget Anything</h1>
-</div>
-<form ng-show="currentUser" role="form" ng-submit="addItem($event)">
+<form role="form" ng-submit="addItem($event)">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Ice cream" autofocus="true" ng-model="item.name">
   </div>
-  <ul class="nav nav-pills">
-    <li ng-class="{ active: list.selected }" ng-repeat="list in lists">
-      <a href="#">
-        <label ng-click="selectList($event, list)">
-          <input type="radio" name="radio" ng-model="item.list" value="{{ list.title }}" class="hide" />
-          {{ list.title }}
-        </label>
-      </a>
-    </li>
-  </ul>
 </form>
-
 
 <div class="row marketing">
   <table class="table">
