@@ -20,15 +20,14 @@ angular.module('listsApp', [
         templateUrl: 'partials/signup',
         controller: 'SignupCtrl'
       })
-      .when('/settings', {
-        templateUrl: 'partials/settings',
-        controller: 'SettingsCtrl',
+      .when('/lists', {
+        templateUrl: 'partials/lists',
+        controller: 'MainCtrl',
         authenticate: true
       })
       .when('/lists/:id', {
         templateUrl: 'partials/details',
-        controller: 'MainCtrl',
-        authenticate: true
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'

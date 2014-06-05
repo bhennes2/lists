@@ -1,35 +1,39 @@
 'use strict';
 
 angular.module('listsApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $location) {
 
     $http.get('/api/awesomeThings').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
     });
 
     $scope.lists = [
-      { id: 1, title: "Grocery" },
-      { id: 2, title: "Suburbs"}
+      { id: 1, name: "Grocery" },
+      { id: 2, name: "Suburbs"}
     ];
 
     $scope.items = [
-      { id: 1, title: "Bananas", list: "Grocery" },
-      { id: 2, title: "Apples", list: "Grocery" },
-      { id: 3, title: "Homebrew", list: "Suburbs" },
+      { id: 1, name: "Bananas" },
+      { id: 2, name: "Apples" },
+      { id: 3, name: "Homebrew" },
     ];
+
+    $scope.addList = function(e){
+      e.preventDefault();
+      var list = { id: 1, name: $scope.list.name };
+      $location.url('/lists/' + list.id);
+    };
 
     $scope.addItem = function(e){
       e.preventDefault();
-      console.log($scope.item);
-      var items = [{ id: 4, title: $scope.item.name, list: $scope.item.list }];
+      var items = [{ id: 1, name: $scope.item.name }];
       $scope.items = items.concat($scope.items);
-      $scope.item = {};
+      $scope.item.name = "";
     };
 
-    $scope.selectList = function(e, list) {
-      angular.forEach($scope.lists, function(newList, i){
-        newList.selected = list.id == newList.id;
-      });
+    $scope.toggleComplete = function(e, item){
+      var checked = e.target.checked;
+      item.completed = checked;
     };
 
   });

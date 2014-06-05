@@ -1,5 +1,5 @@
 <div ng-include="'partials/navbar'"></div>
-
+<h3>Grocery</h3>
 <form role="form" ng-submit="addItem($event)">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Ice cream" autofocus="true" ng-model="item.name">
@@ -8,17 +8,12 @@
 
 <div class="row marketing">
   <table class="table">
-    <tr ng-repeat="item in items">
+    <tr ng-repeat="item in items" ng-class="{ completed: item.completed }">
       <td width="5%">
-        <input type="checkbox" />
+        <input type="checkbox" ng-click="toggleComplete($event, item)" />
       </td>
-      <td width="80%">
-        {{ item.title }}
-      </td>
-      <td width="15%">
-        <b>
-          <a href="/lists/{{ item.id }}">{{ item.list }}</a>
-        </b>
+      <td width="95%">
+        {{ item.name }}
       </td>
     </tr>
   </table>

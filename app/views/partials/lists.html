@@ -1,0 +1,11 @@
+<div ng-include="'partials/navbar'"></div>
+
+<h3>My Lists</h3>
+
+<div class="row marketing">
+  <table class="table">
+    <tr ng-repeat="list in lists">
+      <td><a href="/lists/{{ list.id }}">{{ list.name }}</a></td>
+    </tr>
+  </table>
+</div>

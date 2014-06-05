@@ -90,7 +90,7 @@ body {
     }
 }
 
-.checkbox .form {
-    display: inline;
-    float: left;
+tr.completed {
+    color: #ccc;
+    text-decoration: line-through;
 }
